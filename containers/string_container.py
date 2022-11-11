@@ -9,12 +9,15 @@ class StringContainer(Container):
         self._arr = []
         for item in self._items:
             self._arr.append(item)
+    
+    def __add__(self, other):
+        return StringContainer(','.join(self._arr + other._arr))
 
     #overriding all_items_method
     def add_all_items(self):
         concat = ''
         for item in self._items:
-            concat = concat + items
+            concat = concat + item
         return concat
 
     def __str__(self):
@@ -25,11 +28,9 @@ class StringContainer(Container):
     
     #overriding list_items method
     def list_items(self):
-        for items in self._items:
+        for item in self._items:
             print(item)
     
-    def __add__(self, obj):
-        return self.__str__() + obj.__str__()
     
     def __iter__(self):
         self.index = 0
